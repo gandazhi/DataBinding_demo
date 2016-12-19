@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+    <data>
+        <variable
+            name="user"
+            type="com.gandazhi.databinding_demo.User"/>
+        <variable
+            name="Presenter"
+            type="com.gandazhi.databinding_demo.MainActivity.Presenter"/>
+    </data>
+    <RelativeLayout
         android:id="@+id/activity_main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -13,8 +21,9 @@
         tools:context="com.gandazhi.databinding_demo.MainActivity">
 
         <TextView
+            android:onClick="@{Presenter.onClick}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Hello World!" />
+            android:text="@{user.name}" />
     </RelativeLayout>
 </layout>
