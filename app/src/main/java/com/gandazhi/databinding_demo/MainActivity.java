@@ -11,6 +11,7 @@ import com.gandazhi.databinding_demo.databinding.ActivityMainBinding;
 public class MainActivity extends AppCompatActivity {
 
     User user = new User("gandazhi");
+    ActivityMainBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,15 +22,20 @@ public class MainActivity extends AppCompatActivity {
          * 下划线前的首字母大写，下划线之后的首字母大写
          * 所有生成的类都会有Binding后缀
          */
-        ActivityMainBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         binding.setUser(user);
         //binding.setVariable(BR.user,user);
         binding.setPresenter(new Presenter());
     }
 
     public class Presenter {
-        public void onClick(View view) {
+        public void onClick_tv(View view) {
             Toast.makeText(MainActivity.this, "onClick", Toast.LENGTH_LONG).show();
+            user.setBtn_name("改变TextView");
         }
+        public void onClick_btn(View view){
+            user.setName("new demo");
+        }
+
     }
 }
